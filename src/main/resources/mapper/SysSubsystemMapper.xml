@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chrise.demo.dao.CursorDao">
+    <select id="select" resultType="com.chrise.demo.bean.SysSubsystem">
+        select
+            *
+        from sys_subsystem
+    </select>
+    <select id="selectFirst" resultType="com.chrise.demo.bean.SysSubsystem">
+        select
+            *
+        from sys_subsystem
+    </select>
+</mapper>
