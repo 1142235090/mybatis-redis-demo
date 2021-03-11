@@ -2,7 +2,6 @@ package com.chrise.demo.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
@@ -136,5 +135,22 @@ public class RedisUtils
         @SuppressWarnings("unchecked")
         List<T> ts = (List<T>) JSONArray.parseArray(jsonString, clazz);
         return ts;
+    }
+
+    /**
+     * 获取同步锁并设置超时时间
+     * @param synKey key
+     * @param expireTime 防止死锁
+     * @return
+     */
+    public Boolean setNX(String synKey,String clientId,int expireTime){
+        return redisTemplate.opsForValue().setIfAbsent(synKey,clientId,expireTime,TimeUnit.SECONDS);
+    }
+
+    /**
+     * 删除同步锁
+     */
+    public Boolean delNX(String synKey){
+        return redisTemplate.delete(synKey);
     }
 }
