@@ -3,6 +3,8 @@ package com.chrise.demo.controller;
 import com.chrise.demo.utils.RedisUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
+import org.redisson.api.RTopic;
+import org.redisson.codec.SerializationCodec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,4 +86,22 @@ public class RedisTestController {
         return "购买成功！";
         // -----------------------------redisson操作------------------------------
     }
+
+    /**
+     * 测试redis主题发布消息
+     */
+    @GetMapping("/topic/put")
+    public void putTopic(){
+        try{
+            RTopic topic1 = redisson.getTopic("topic", new SerializationCodec());
+            topic1.publish("测试主题消息发布1");
+            topic1.publish("测试主题消息发布1");
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            redisson.shutdown();
+        }
+    };
 }
