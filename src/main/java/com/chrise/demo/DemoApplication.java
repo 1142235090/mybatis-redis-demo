@@ -19,7 +19,7 @@ public class DemoApplication {
     @Bean
     public Redisson redisson(){
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://192.168.195.128:6379").setPassword("123456").setDatabase(0);
+        config.useSingleServer().setAddress("redis://192.168.1.202:6379").setPassword("123456").setDatabase(0);
         return (Redisson) Redisson.create(config);
     }
 
@@ -41,8 +41,6 @@ public class DemoApplication {
         }
         catch (Exception ex){
             System.out.println(ex.getMessage());
-        }finally {
-
         }
         return "";
     }
