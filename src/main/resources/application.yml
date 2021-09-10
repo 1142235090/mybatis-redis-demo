@@ -7,7 +7,7 @@ mybatis:
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.1.202:3306/soil?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.202:3306/demo?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
   redis:
@@ -21,3 +21,8 @@ spring:
         max-wait: 1ms
         max-idle: 10
         min-idle: 5
+nacos:
+  config:
+    server-addr: 192.168.1.202:8848
+  discovery:
+    server-addr: 192.168.1.202:8848

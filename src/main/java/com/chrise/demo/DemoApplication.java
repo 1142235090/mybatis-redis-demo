@@ -1,5 +1,6 @@
 package com.chrise.demo;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.redisson.Redisson;
 import org.redisson.api.RTopic;
 import org.redisson.api.RedissonClient;
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@NacosPropertySource(dataId = "WARE_ID", autoRefreshed = true)
 public class DemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);

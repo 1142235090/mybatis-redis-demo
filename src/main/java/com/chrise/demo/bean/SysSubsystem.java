@@ -1,9 +1,12 @@
 package com.chrise.demo.bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,24 +17,23 @@ import java.util.Date;
  * @since 2020-10-10 16:54:38
  */
 @Data
-@Table(name = "sys_subsystem")
+@TableName("sys_system")
 public class SysSubsystem implements Serializable {
     private static final long serialVersionUID = 530963422154085679L;
     /**
      * 子系统ID，主键，自增
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     /**
      * 子系统名称
      */
-    @Column(name="name")
+    @TableField("name")
     private String name;
     /**
      * 子系统访问路径
      */
-    @Column(name="path")
+    @TableField("path")
     private String path;
     /**
      * 顺序
@@ -40,56 +42,60 @@ public class SysSubsystem implements Serializable {
     /**
      * 子系统图标URL
      */
-    @Column(name="icon_url")
+    @TableField("icon_url")
     private String iconUrl;
     /**
-     * 子系统类别，字典
+     * 子系统类别
      */
-    @Column(name="category")
+    @TableField("category")
     private String category;
     /**
      * 子系统状态（0正常 1停用）
      */
-    @Column(name="status")
+    @TableField("status")
     private String status;
 
-    /** 创建者 */
-    @Column(name="create_by")
+    /**
+     * 创建者
+     */
+    @TableField("create_by")
     private String createBy;
 
-    /** 创建时间 */
+    /**
+     * 创建时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name="create_time")
+    @TableField("create_time")
     private Date createTime;
 
     /**
      * 备注
      */
-    @Column(name="remark")
+    @TableField("remark")
     private String remark;
 
     /**
      * 删除标记
      */
-    @Column(name="del_flag")
+    @TableField("del_flag")
     private String delFlag;
 
     /**
      * 所有权
      */
-    @Column(name="owner")
+    @TableField("owner")
     private String owner;
 
     /**
      * 钥匙
      */
-    @Column(name="topic")
+    @TableField("topic")
     private String topic;
 
     /**
      * 钥匙
      */
-    @Column(name="system_key")
+    @TableField("system_key")
     private String systemKey;
 
     public Integer getId() {
